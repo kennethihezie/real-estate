@@ -1,0 +1,6 @@
+@media print {
+    body, .results {background: none;}
+    p {color: #000;}
+    .buttons {display: none;}
+    .results .logo {display: none;}
+}

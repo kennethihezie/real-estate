@@ -1,0 +1,885 @@
+/*
+ * In an attempt to make the css file more re-usable I have devided it into a section that is constant an a section
+ * that is based on client request. With that being said, there maybe some duplication of definations.
+ */
+ 
+ 
+ 
+ 
+/* 
+ *
+ * YOU SHOULDN'T NEED TO MODIFY THE BELOW!
+ *
+ */
+ 
+* { 
+    margin: 0; 
+    padding: 0; 
+    text-decoration: none; 
+    outline: none; 
+    font-weight: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: #FFFFFF;
+    color: #fff;
+	font-family: 'Roboto', sans-serif;
+}
+
+.page {
+    /*
+     * This should be standard.
+     */
+    position: relative;
+    display: none;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.quiz {
+    /*
+     * This should be standard.
+     */
+    min-width: 600px;
+}
+
+.quiz * {
+    margin: 0 auto;
+}
+
+.quiz .question {
+    font-weight: 400;
+	margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #0075C9;
+}
+
+.quiz .answer {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.quiz input[type='radio'], .quiz input[type='checkbox'] {
+    margin-right: 15px;
+}
+
+.quiz .answer span {
+    width: 90%;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+/**
+ * Radio and Checkboxes
+ * -------------------------------
+ * The CSS below is for the custom radio and check boxes.
+ */
+.regular-checkbox, .regular-radio {
+    display: none;
+}
+
+.regular-radio + label {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: #cfcfcf;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 6px;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+.regular-radio:checked + label:after {
+    content: ' ';
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    position: absolute;
+    top: 1px;
+    background: #99a1a7;
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+    text-shadow: 0px;
+    left: 1px;
+    font-size: 32px;
+}
+
+.regular-radio:checked + label {
+    background-color: #e9ecee;
+    color: #99a1a7;
+    border: 1px solid #adb8c0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.regular-radio + label:active, .regular-radio:checked + label:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.regular-checkbox {
+    display: none;
+}
+
+.regular-checkbox + label {
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 9px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+}
+
+.regular-checkbox + label:active, .regular-checkbox:checked + label:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.regular-checkbox:checked + label {
+    background-color: #e9ecee;
+    border: 1px solid #adb8c0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+    color: #99a1a7;
+}
+
+.regular-checkbox:checked + label:after {
+    content: '\2714';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: #99a1a7;
+}
+
+.outer-label {
+    display: block;
+    margin: 5px;
+    padding: 5px;
+}
+
+.outer-label span {
+    display: inline-block;
+    vertical-align: top;
+    width: 90%;
+    padding-left: 2%;
+}
+
+/*
+ *
+ * THIS IS THE CLIENT SPECIFIC CSS THAT WILL CHANGE EVERY TIME!
+ *
+ */
+
+/* Popup */
+iframe#marketleader {
+    height: 625px;
+}
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    border: 1px solid #888;
+    width: 370px;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 15px;
+    box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+    background-clip: padding-box;
+    outline: 0;
+}
+
+.close {
+    position: absolute;
+    right: -14px;
+    top: -14px;
+    background-color: #000;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    display: block;
+    width: 34px;
+    height: 34px;
+    font-size: 22px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 22px;
+    color: #fff;
+    text-shadow: none;
+    opacity: 1;
+    box-shadow: 0 0 8px #333;
+}
+
+.modal-body {
+    padding: 30px 40px 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+
+.next,
+.start,
+.lead {
+    display: block;
+    padding: 10px 20px 10px 20px;
+    width: 100px;
+    background-color: #3fa8f4;
+    text-align: center;
+    color: #FFFFFF;
+    border-radius: 2px;
+    margin: 25px auto 0 auto;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.lead {
+    width: 20%;
+}
+
+.quiz .question {
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.next:hover,
+.start:hover,
+.lead:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 
+                0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.container{
+    width:500px;
+    display:block;
+    margin:50px auto;
+}
+
+.progress {
+    overflow: hidden;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        margin-bottom: 20px;
+    width: 30%;
+}
+
+.progress-wrapper {
+    margin-top: 280px;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    background-color: #7AC843;
+}
+
+.progress-striped .progress-bar {
+    background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-size: 40px 40px;
+}
+
+.progress.active .progress-bar {
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
+    -moz-animation: progress-bar-stripes 2s linear infinite;
+}
+
+.intro-header {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 44px;
+    color: #FFFFFF;
+}
+
+.intro-info {
+    margin: 15px auto 0 auto;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 18px;
+    width: 700px;
+}
+
+.intro-logo {
+    background: url(../images/logo.png) no-repeat left center;
+    height: 100px;
+    max-width: 200px;
+    background-size: contain;
+    width: 200px;
+    margin: auto;
+}
+
+.footer-wrapper, 
+.result-wrapper {
+    bottom: 0px;
+    width: 100%;
+    padding-bottom: 20px;
+    background-color: #111820;
+    padding-top: 20px;
+}
+
+.footer-detail {
+    font-size: 14px;
+}
+
+.footer {
+    width: 60%;
+    margin: auto;
+}
+
+.result-header {
+    text-align: center;
+    font-size: 20px;
+    color: #0075C9;
+    font-weight: 600;
+}
+
+.result-letter-grade {
+    font-size: 120px;
+    text-align: center;
+    font-weight: bolder;
+    color: #7AC843;
+	font-weight: 700;
+}
+
+.result-text {
+    font-size: 16px;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+	color: #adadad;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.start-wrapper {
+    width: 100%;
+    height: 40px;
+}
+
+.question-container {
+    width: 40%;
+}
+
+.results-wrapper {
+    background: #DBDBDB;
+    padding: 20px 50px;
+    margin-top: 50px;
+    min-height: 120px;
+    margin-bottom: 50px;
+}
+
+.answers {
+    font-weight: 300;
+    font-size: 16px;
+    color: #111820;
+    text-align: left;
+}
+
+/* unvisited link */
+.download-link {
+    color: #f48252;
+}
+
+/* visited link */
+.download-link {
+    color: #f48252;
+}
+
+/* mouse over link */
+.download-link {
+    color: #f48252;
+}
+
+/* selected link */
+.download-link {
+    color: #f48252;
+}
+
+.lead-wrapper-start {
+    margin-top: 20px;
+    margin: auto;
+}
+
+.lead-wrapper-home {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    margin: auto;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    position: relative; 
+    left: -50%;
+    display: none;
+    margin-top: 25%;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+.alert-wrapper {
+    position: absolute; 
+    left: 50%;
+}
+
+.footer-image {
+    width: auto;
+    margin-top: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.copyright {
+    margin-top: 15px;
+    font-size: 10px;
+}
+
+.logo-wrapper {
+    background-color: #0075C9;
+    z-index: -1;
+    padding-bottom: 30px;
+    position: absolute;
+    width: 100%;
+}
+
+.your-answer-group {
+    font-size: 12px;
+    color: #111820;
+    font-weight: 500;
+    text-align: left;
+    font-style: italic;
+    margin: 0 auto;
+    width: 40%;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+.your-answer-label {
+    font-size: 12px ;
+    color: #0075C9;
+    font-weight: 600;
+    text-align: left;
+    font-style: italic;
+}
+
+.result-question {
+    font-size: 14px;
+    color: #111820;
+    font-weight: 600;
+    text-align: left;
+    margin: 0 auto;
+    width: 40%;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.footer-header {
+	margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.result-header-wrapper {
+    background: #E8E8E8;
+    position: absolute;
+    width: 100%;
+    z-index: -99;
+    margin-top: 180px;
+}
+
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #0075C9;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 9px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+}
+
+input[type='checkbox']:active, 
+input[type='checkbox']:checked:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+input[type='checkbox']:checked {
+    background-color: #0075C9;
+    border: 1px solid #adb8c0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+    color: #99a1a7;
+}
+
+input[type='checkbox']:checked:after {
+    content: '\2714';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: #FFFFFF;
+}
+
+.result-header-container {
+    width: 20%;
+    margin: auto;
+    background-color: #FFFFFF;
+    border-radius: 500px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    min-width: 500px;
+}
+
+.guide-header {
+    color: #0075C9;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.guide-text {
+    color: #111820;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.guide-right {
+    float: left;
+    width: 60%;
+}
+
+.guide-left {
+    float: left;
+    background-image: url(../images/Complete-Guide-to-Lead-Generation-CTA-image.jpg);
+    width: 30%;
+    height: 180px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 20px;
+}
+
+.guide-left-two {
+    float: left;
+    background-image: url(../images/Market-Leader-leads-CTA-image.jpg);
+    width: 30%;
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 20px;
+}
+
+.guide-wrapper {
+    width: 40%;
+    margin: auto;
+    padding-top: 25px;
+    height: 200px;
+}
+
+.guide-wrapper-two {
+    width: 40%;
+    margin: auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    height: 160px;
+}
+
+.download {
+    width: 200px;
+    margin: 13px auto 0 auto;
+}
+
+.line {
+    height: 1px;
+    background: #111820;
+    width: 40%;
+    margin: auto;
+}
+
+.your-answers {
+    z-index: 1;
+    margin-top: 510px;
+    background: #FFFFFF;
+    padding-top: 50px;
+}
+
+.progress-label {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: black;
+    margin-top: 10px;
+}
+
+.fact {
+    color: #111820;
+    font-size: 12px;
+    width: 40%;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
+.fact a:link, .fact a:visited {
+    color: #3fa8f4;
+    font-weight: 600;
+}
+
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px){
+  /* some CSS here */
+
+    iframe#marketleader {
+        height: 950px;
+    }
+
+    .webfont{
+        font-size: 43px;
+    }
+
+    .modal-content{
+        width: 80%;
+    }
+  
+    .intro-header {
+        font-size: 60px;
+    }
+    
+    .intro-info {
+        font-size: 30px;    
+    }
+    
+    .intro-logo {
+        height: 200px;
+        max-width: 400px;
+        width: 400px;
+        margin: auto;
+    }
+    
+    .progress-wrapper {
+        margin-top: 430px;
+    }
+  
+    .progress-label {
+        font-size: 35px;
+    }
+    
+    .progress {
+        width: 60%;
+        height: 60px;
+    }
+
+    .question-container {
+        width: 80%;
+    }
+    
+    .quiz .question {
+        font-size: 40px;
+    }
+    
+    input[type='radio']:after {
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        top: -15px;
+    }
+    
+    input[type='radio']:checked:after {
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        top: -15px;
+    }
+    
+    .quiz input[type='radio'] {
+        margin-right: 30px;
+    }
+    
+    .quiz input[type='checkbox'] {
+        margin-right: 30px;
+        padding: 15px;
+    }
+    
+    input[type='checkbox']:checked:after {
+        font-size: 22px;
+        left: 6px;
+    }
+    
+    .answers {
+        font-size: 40px;
+    }
+
+     .next, .start, .lead {
+        width: 80%;
+        font-size: 50px;
+        margin-bottom: 50px;
+     }
+     
+     .footer-image {
+        display: none;
+     }
+
+     .footer {
+        width: 90%;
+     }
+     
+     .footer-wrapper {
+         margin-top: 50px;
+     }
+     
+     .footer-header {
+         font-size: 12px;     
+     }
+     
+     .footer-detail {
+         font-size: 10px;
+     }
+     
+     .copyright {
+         font-size: 8px;
+     }
+     
+     .result-header-wrapper {
+         margin-top: 300px;
+     }
+     
+     .your-answers {
+         margin-top: 790px;
+     }
+     
+     .result-header-container {
+         width: 80%;
+     }
+     
+     .result-header {
+         font-size: 50px;
+     }
+     
+     .result-letter-grade {
+         font-size: 200px;
+     }
+     
+     .result-text {
+         font-size: 25px;
+     }
+     
+     .result-question {
+         width: 80%;
+         font-size: 30px;
+     }
+     
+     .your-answer-group {
+         width: 80%;
+     }
+     
+     .your-answer-group,
+     .your-answer-label {
+         font-size: 30px;     
+     }
+     
+     .fact {
+         width: 80%;
+         font-size: 30px;
+     }
+     
+     .line {
+         width: 80%;
+     }
+     
+     
+     .guide-wrapper,
+     .guide-wrapper-two {
+         width: 80%;
+     }
+     
+     .guide-header {
+          font-size: 30px;
+     }
+     
+     .guide-text {
+          font-size: 25px;
+     }
+     
+     .guide-right {
+          float: right;
+          width: 100%;
+     }
+     
+     .guide-left,
+     .guide-left-two {
+          width: 100%;
+          height: 250px;
+     }
+     
+}
+
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+  /* some CSS here */
+  
+}
